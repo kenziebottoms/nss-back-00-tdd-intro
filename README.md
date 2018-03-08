@@ -2,11 +2,11 @@
 
 ### Goals
 
-- basic CRUD functionality
-    - [ ] create
-    - [ ] read
-    - [ ] update
-    - [ ] destroy
+- build and test basic CRUD functionality
+    - [x] create
+    - [x] read
+    - [x] update
+    - [x] destroy
 
 ### Using
 

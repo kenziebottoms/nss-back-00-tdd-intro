@@ -2,7 +2,7 @@
 
 const { createTables } = require("../js/makeTable");
 const { assert } = require("chai");
-const { getCustomers, addCustomer, deleteCustomer } = require("../js/customers");
+const { getCustomers, addCustomer, deleteCustomer, editCustomer } = require("../js/customers");
 
 const sampleCustomer = {
     firstName: "Pat",
@@ -23,10 +23,10 @@ describe("Write fnality:", () => {
         it("should resolve to an integer", () => {
             addCustomer(sampleCustomer)
                 .then( response => {
+                    assert.isDefined(response);
                     assert.typeOf(response, "integer");
                 })
-                .catch(err => {
-                });
+                .catch(err => {});
         });
     });
 });
@@ -46,6 +46,41 @@ describe("Read fnality:", () => {
 });
 
 // Update
+
+describe("update fnality", () => {
+    describe("editCustomer()", () => {
+        it("should be a function", () => {
+            assert.isFunction(editCustomer);
+        });
+        it("should return a promise", () => {
+            addCustomer(sampleCustomer)
+                .then(id => {
+                    assert.typeOf(editCustomer(id, {firstName: "Patricia", lastName: "Bobs"}), "promise");
+                });
+        });
+        it("should resolve into an object", () => {
+            addCustomer(sampleCustomer)
+                .then(id => {
+                    editCustomer(id, {firstName: "Patricia", lastName: "Bobs"})
+                        .then(response => {
+                            assert.isObject(response);
+                        })
+                        .catch(err => {});
+                });
+        });
+        it("should update the name from pat smith to patricia bobs", () => {
+            addCustomer(sampleCustomer)
+                .then(id => {
+                    editCustomer(id, {firstName: "Patricia", lastName: "Bobs"})
+                        .then(response => {
+                            assert.equal(response.firstName, "Patricia");
+                            assert.equal(response.lastName, "Patricia");
+                        })
+                        .catch(err => {});
+                });
+        });
+    });
+});
 
 // Destroy
 

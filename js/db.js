@@ -7,10 +7,8 @@ const { createTable } = require("./makeTable");
     new sqlite3.Database("acme.sqlite", () => {
         createTable()
             .then(data => {
-                console.log("ids", data);
             })
             .catch(err => {
-                console.log(err);
             });
     });
 })();

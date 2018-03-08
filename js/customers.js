@@ -24,7 +24,7 @@ module.exports.addCustomer = ({ firstName, lastName, city, street, state, zip, p
             "${state}",
             "${zip}",
             "${phone}"
-        )`, (err, data) => {
+        )`, function (err, data) {
             if (err) return reject(err);
             resolve(this.lastID);
         })
@@ -36,7 +36,22 @@ module.exports.deleteCustomer = id => {
         db.run(`DELETE FROM customers
         WHERE customer_id = ${id};`, function(err, data) {
             if (err) return reject(err);
-            console.log(data);
+            resolve(data);
+        });
+    });
+};
+
+module.exports.editCustomer = (id, customer) => {
+    return new Promise((resolve, reject) => {
+        let properties = Object.entries(customer);
+        let sql = `UPDATE customers SET `;
+        for (let prop in properties) {
+            sql += `${properties[prop][0].toString()} = "${properties[prop][1].toString()}", `;
+        }
+        sql = sql.slice(0, sql.length-2);
+        sql += ` WHERE customer_id = ${+id}`;
+        db.run(sql, function (err, data) {
+            if (err) return reject(err);
             resolve(data);
         });
     });
