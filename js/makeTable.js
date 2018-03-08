@@ -1,6 +1,6 @@
 const sqlite3 = require("sqlite3");
 const db = new sqlite3.Database("acme.sqlite");
-const { customers } = require("../data/customers");
+const { customers } = require("../data/customers.json");
 
 module.exports.createTable = () => {
     return new Promise((resolve, reject) => {
