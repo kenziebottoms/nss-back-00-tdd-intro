@@ -1,6 +1,14 @@
-## An intro to test-driven development
+# Intro to test-driven development
 
-Using
+### Goals
+
+- basic CRUD functionality
+    - [ ] create
+    - [ ] read
+    - [ ] update
+    - [ ] destroy
+
+### Using
 
 - chai
 - mocha

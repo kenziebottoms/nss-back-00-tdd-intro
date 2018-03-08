@@ -1,3 +1,5 @@
+"use strict";
+
 const sqlite3 = require("sqlite3");
 const db = new sqlite3.Database("acme.sqlite");
 const { customers } = require("../data/customers.json");

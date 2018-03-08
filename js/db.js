@@ -1,3 +1,5 @@
+"use strict";
+
 const sqlite3 = require("sqlite3").verbose();
 const { createTable } = require("./makeTable");
 

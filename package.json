@@ -1,0 +1,30 @@
+{
+  "name": "tdd-101",
+  "version": "1.0.0",
+  "description": "Using",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4"
+  },
+  "scripts": {
+    "test": "mocha -R list --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenziebottoms/nss-back-00-tdd-intro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenziebottoms/nss-back-00-tdd-intro/issues"
+  },
+  "homepage": "https://github.com/kenziebottoms/nss-back-00-tdd-intro#readme"
+}
