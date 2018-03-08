@@ -22,8 +22,25 @@ describe("Read fnality:", () => {
 
 describe("Write fnality:", () => {
     describe("addCustomer()", () => {
-        it("should return an object", () => {
-            assert.isObject(addCustomer());
+        let customer = {
+            firstName: "Pat",
+            lastName: "Smith",
+            city: "Effington",
+            street: "Eff Street",
+            state: "Eflorida",
+            zip: "12345",
+            phone: "555-123-4567"
+        };
+        it("should return a promise", () => {
+            assert.typeOf(addCustomer(customer), "promise");
+        });
+        it("should resolve to an integer", () => {
+            addCustomer(customer)
+                .then( response => {
+                    assert.typeOf(response, "integer");
+                })
+                .catch(err => {
+                });
         });
     });
 });

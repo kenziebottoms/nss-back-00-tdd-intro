@@ -13,6 +13,20 @@ module.exports.getCustomers = () => {
     });
 };
 
-module.exports.addCustomer = () => {
-    return {};
+module.exports.addCustomer = ({ firstName, lastName, city, street, state, zip, phone }) => {
+    return new Promise((resolve, reject) => {
+        db.run(`INSERT INTO customers VALUES (
+            null,
+            "${firstName}",
+            "${lastName}",
+            "${city}",
+            "${street}",
+            "${state}",
+            "${zip}",
+            "${phone}"
+        )`, (err, data) => {
+            if (err) return reject(err);
+            resolve(this.lastID);
+        })
+    });
 }
