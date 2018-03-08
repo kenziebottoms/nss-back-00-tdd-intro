@@ -29,4 +29,15 @@ module.exports.addCustomer = ({ firstName, lastName, city, street, state, zip, p
             resolve(this.lastID);
         })
     });
-}
+};
+
+module.exports.deleteCustomer = id => {
+    return new Promise((resolve, reject) => {
+        db.run(`DELETE FROM customers
+        WHERE customer_id = ${id};`, function(err, data) {
+            if (err) return reject(err);
+            console.log(data);
+            resolve(data);
+        });
+    });
+};
